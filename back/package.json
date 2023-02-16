@@ -1,5 +1,5 @@
 {
-  "name": "store",
+  "name": "servidor",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
