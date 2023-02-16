@@ -6,14 +6,14 @@
         "use": "@vercel/static-build"
       },
       {
-        "src": "servidor/**",
+        "src": "./back/index.js",
         "use": "@vercel/node"
       }
     ],
     "routes": [
       {
-        "src": "/movies/(.*)",
-        "dest": "servidor/$1"
+        "src": "/(.*)",
+        "dest": "/"
       },
       {
         "src": "/(.*)",
