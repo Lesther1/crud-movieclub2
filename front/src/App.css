@@ -24,10 +24,15 @@ form{
 .btn-send{
     background-color: green;
     width: 100px;
-    height: 48px;
+    height: 40px;
     border: transparent;
-    font-size: 20px;
+    font-size: 15px;
     border-radius: 6px;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+.btn-send:hover{
+    background-color: rgba(0, 128, 0, 0.425);
 }
 .btn-send a{
     text-decoration: none;

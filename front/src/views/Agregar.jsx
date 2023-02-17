@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
+import './agregar.css'
 
 function Agregar() {
     const [title, setTitle] = useState('');
@@ -37,6 +38,7 @@ function Agregar() {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (title === "" || year === "" || duration === "" || language === "" || date === "" || country === "") {
+      window.alert("debes llenar los campos")
       return;
     }
   
@@ -75,37 +77,43 @@ function Agregar() {
           <input type="text" 
           placeholder='Titulo' 
           onChange={handleTitleChange}
-          value={title} 
+          value={title}
+          required 
           className='form-input'/>
   
           <input type="number" 
           placeholder='Año'
           onChange={handleYearChange}
           value={year}
+          required
            className='form-input'/>
   
           <input type="number" 
           placeholder='Duracion' 
           onChange={handleDurationChange}
           value={duration}
+          required
           className='form-input'/>
           
           <input type="text"
           placeholder='idioma'
           onChange={handleLanguageChange}
           value={language}
+          required
           className='form-input' />
           
           <input type="date" 
           placeholder='Fecha de lanzamiento' 
           onChange={handleDateChange}
           value={date}
+          required
           className='form-input' />
           
           <input type="text"
           placeholder='Pais'
           onChange={handleCountryChange}
           value={country} 
+          required
           className='form-input' />
           </div>
           <button className='btn-send' onClick={handleSubmit}>  
