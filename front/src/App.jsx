@@ -1,21 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import {
+  BrowserRouter,
+  BrowserRouter as Router,
+  Navigate,
+  Route,
+  Routes,
+} 
+from "react-router-dom"
+
 import './App.css'
 import Navbar from './components/Navbar'
-import Form from './components/Form'
+import Agregar from "./views/Agregar"
+import Editar from "./views/Editar"
+import Home from "./views/Home"
 
 function App() {
 
   return (
-    <div>
-      <nav>
-        <Navbar/>
-      </nav>
-      <div className='list-form-main-container'>
-        <Form/>
-      </div>
-    </div>
-  )
-}
+  <BrowserRouter>
+  <Navbar/>
+   <Routes>
+    <Route path = "/" element={<Home/>} />
+    <Route path = "/agregar" element={<Agregar/>} />
+    <Route path = "/editar/:id" element={<Editar/>} />
+  </Routes>
+  </BrowserRouter>
+ 
+)}
 
 export default App
