@@ -3,49 +3,75 @@ const Movie = require("../models/Movie");
 const moment = require('moment');
 
 
-router.get("/", (req, res) => {
-  Movie.find((err, result) => {
-    if (err) throw new Error(err);
-    const movies = result.map(movie => {
-      return {
-        ...movie.toObject(),
-        mov_dt_rel: moment(movie.mov_dt_rel).format('DD/MM/YYYY')
+router.post('/addmovie', (req, res) => {
+  const nuevomovie = new modelomovie({
+      title: req.body.mov_title,
+      year: req.body.mov_year,
+      time: req.body.mov_time,
+      lang: req.body.mov_lang,
+      date: req.body.mov_dt_rel,
+      ountry: req.body.mov_rel_country
+  })
+  nuevomovie.save(function (err) {
+      if (!err) {
+          res.send('pelicula agregado correctamente')
+      } else {
+          res.send(err)
       }
-    });
-    res.json(movies);
-  });
-});
+  })
+})
 
+router.get('/getmovies', (req, res) => {
+  modelomovie.find({}, function (docs, err) {
+      if (!err) {
+          res.send(docs)
+      } else {
+          res.send(err)
+      }
+  })
+})
 
-router.post("/", (req, res) => {
-  Movie.create(req.body, (err, result) => {
-    if (err) throw new Error(err);
-    res.json(result);
-  });
-});
+router.post('/obtenerdatamovie', (req, res) => {
+  modelomovie.find({_id:req.body._id}, function (docs, err) {
+      if (!err) {
+          res.send(docs)
+      } else {
+          res.send(err)
+      }
+  })
+})
 
-router.get('/:id', (req, res) => {
-  Movie.findById(req.params.id, (err, result) => {
-    if (err) throw new Error(err);
+router.post('/actualizarmovie', (req, res) => {
+  modelomovie.findOneAndUpdate({_id:req.body._id},{
+      mov_title: req.body.mov_title,
+      mov_year: req.body.mov_year,
+      mov_time: req.body.mov_time,
+      mov_lang: req.body.mov_lang,
+      mov_dt_rel: req.body.mov_dt_rel,
+      mov_rel_country: req.body.mov_rel_country
+  }, (err)=>{
+      if (!err) {
+          res.send('pelicula actualizada correctamente')
+      } else {
+          res.send(err)
+      }
+  })
+})
 
-    const movie = result.toObject();
-    movie.movie.mov_dt_rel = moment(movie.movie.mov_dt_rel).format('DD/MM/YYYY');
-
-    res.json(movie);
-  });
-});
-
-router.put("/:id", (req, res) => {
-Movie.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true }, (err, result) => {    if (err) throw new Error(err);
-    res.json(result);
-  });
-});
-
-router.delete("/:id", (req, res) => {
-  Movie.findOneAndRemove({ _id: req.params.id }, (err, result) => {
-    if (err) throw new Error(err);
-    res.end();
-  });
-});
-
+router.post('/borrarmovie', (req, res) => {
+  modelomovie.findOneAndDelete({_id:req.body._id},{
+      mov_title: req.body.mov_title,
+      mov_year: req.body.mov_year,
+      mov_time: req.body.mov_time,
+      mov_lang: req.body.mov_lang,
+      mov_dt_rel: req.body.mov_dt_rel,
+      mov_rel_country: req.body.mov_rel_country
+  }, (err)=>{
+      if (!err) {
+          res.send('pelicula actualizada correctamente')
+      } else {
+          res.send(err)
+      }
+  })
+})
 module.exports = router;
