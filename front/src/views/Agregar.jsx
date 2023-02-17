@@ -61,10 +61,14 @@ function Agregar() {
     });
   };
     return (
+      <div>
+        <button className='btn-send'>
+        <NavLink to="/">
+      volver
+      </NavLink>
+        </button>
+
       <div className='form-main-container'>
-          <NavLink to="/">
-            volver
-          </NavLink>
           <h2 className="form-title">AGREGAR O MODIFICAR UNA PELICULA</h2>
           <form onSubmit={handleSubmit} className='form-container'>
           <div className='form-container'>
@@ -111,6 +115,7 @@ function Agregar() {
           </button>
           </form>
          
+      </div>
       </div>
   )
 }

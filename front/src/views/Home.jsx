@@ -42,10 +42,10 @@ function Home() {
             <td>{Movies.mov_dt_rel}</td>
             <td>{Movies.mov_rel_country}</td>
             <td>
-              <button onClick={() => handleDelete(Movies._id)}>Eliminar</button>
+              <button onClick={() => handleDelete(Movies._id)}><img src="https://img.icons8.com/fluency/20/null/delete-forever.png"/></button>
               <button onClick={() => handleEdit(Movies)}>            
               <NavLink to={`/editar/${Movies._id}`}>
-                Editar
+              <img src="https://img.icons8.com/ultraviolet/20/null/pencil--v1.png"/>
               </NavLink>
               </button>
             </td>
@@ -54,9 +54,11 @@ function Home() {
       })
   return (
     <div>
+      <button className="btn-send">
     <NavLink to="/agregar">
          Agregar
     </NavLink>
+    </button>
     <table>
       <thead>
         <tr>

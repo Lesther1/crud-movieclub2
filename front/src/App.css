@@ -1,0 +1,35 @@
+.form-main-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 450px;
+}
+.form-container input{
+    height: 38px;
+    width: 400px;
+}
+.btn-send{
+    background-color: green;
+    width: 100px;
+    height: 48px;
+    border: transparent;
+    font-size: 20px;
+    border-radius: 6px;
+}
+.btn-send a{
+    text-decoration: none;
+    color: #fff;
+}
