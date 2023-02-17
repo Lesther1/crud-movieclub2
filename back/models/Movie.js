@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 const movieSchema = new mongoose.Schema({
-  mov_id: { type: Number, required: false },
   mov_title: { type: String, required: true },
   mov_year: { type: Number, required: true },
   mov_time: { type: Number, required: true },
