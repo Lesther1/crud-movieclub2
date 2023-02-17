@@ -36,21 +36,10 @@ router.get('/:id', (req, res) => {
 });
 
 router.put("/:id", (req, res) => {
-  const id = req.params.id;
-  const { mov_title, mov_year, mov_time, mov_lang, mov_dt_rel, mov_rel_country } = req.body;
-  const updatedMovie = { mov_title, mov_year, mov_time, mov_lang, mov_dt_rel, mov_rel_country };
-
-  Movie.findOneAndUpdate({ _id: id }, updatedMovie, { new: true }, (err, result) => {
-    if (err) {
-      console.log(err);
-      res.status(500).send("Error al actualizar la película en la base de datos.");
-    } else {
-      console.log(`Película ${id} actualizada en la base de datos.`);
-      res.json(result);
-    }
+Movie.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true }, (err, result) => {    if (err) throw new Error(err);
+    res.json(result);
   });
 });
-
 
 router.delete("/:id", (req, res) => {
   Movie.findOneAndRemove({ _id: req.params.id }, (err, result) => {

@@ -22,7 +22,7 @@ function Editar() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    axios.put(`https://videoclub3.onrender.com/movies/${id}`, movie)
+    axios.put(`https://videoclub3.onrender.com/movies/${id}`, movie, {mode: 'no-corse'})
       .then(() => {
         // Si la actualización es exitosa, redirige al usuario a la página principal
         window.location.href = "/";
